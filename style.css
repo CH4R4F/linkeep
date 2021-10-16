@@ -196,8 +196,9 @@ nav {
     filter: brightness(0.9);
 }
 .warn {
+    color: #fff;
     font-size: 12px;
-    opacity: 0.85;
+    opacity: 0.9;
     position: absolute;
     top: -120%;
     left: 0;
