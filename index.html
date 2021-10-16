@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="A small bookmark app to store your favourite links" />
+        <meta name="author" content="CMarghin" />
+        <meta name="color-scheme" content="dark light" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+            integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+            crossorigin="anonymous"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Linkeep</title>
+    </head>
+    <body data-theme="dark">
+        <header class="flex container">
+            <div class="logo">
+                <a href="#hero">
+                    <img src="./images/bookmark-logo.png" alt="" />
+                </a>
+            </div>
+            <nav class="flex">
+                <div class="search-box">
+                    <input type="search" id="" placeholder="Search ..." />
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="toggle-mode">
+                    <i class="fas fa-moon dark-icon"></i>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="hero" class="container">
+                <div class="introduction">
+                    <h1 class="heading-text">
+                        So many <span class="highlight">links</span> <br />
+                        so little time
+                    </h1>
+                    <p class="subheading-text">type, save, and read later at your own speed</p>
+                </div>
+
+                <div class="form-container">
+                    <form class="bookmark-form">
+                        <div class="link-title form-element">
+                            <input tabindex="1" title="please fill out this field with valid text" class="editable name-input" type="text" id="title" placeholder="Title" />
+                            <p class="warn name-warn none">please add a valid title</p>
+                        </div>
+                        <div class="link-url form-element">
+                            <input tabindex="2" title="please fill out this field with valid link" class="editable link-input" type="url" placeholder="Link ex: https://www.example.com" />
+                            <p class="warn link-warn none">please add a valid url link</p>
+                        </div>
+                        <div class="link-description form-element">
+                            <input tabindex="3" title="please fill out this field with valid text" class="editable description-input" type="text" placeholder="Description [optional]" />
+                        </div>
+
+                        <input type="submit" value="Save" />
+                    </form>
+                </div>
+            </section>
+            <section class="container bookmarks-container">
+                <!-- ========= in case no link in there =========  -->
+                <div class="nolink">
+                    <div class="nolink-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <p class="nolink-message">No Links</p>
+                </div>
+            </section>
+        </main>
+
+        <script src="./linkeep.js"></script>
+    </body>
+</html>
