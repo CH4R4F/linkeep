@@ -7,12 +7,14 @@ const linksContainer = document.querySelector(".bookmarks-container");
 const noLinkMessage = document.querySelector(".nolink");
 const modeToggle = document.querySelector(".toggle-mode");
 const [nameAlert, urlAlert] = document.querySelectorAll(".warn");
+const searchInput = document.querySelector(".search-input");
 
 // ======= when we refresh the page or open the browser we build links from localStorage date =====
 window.addEventListener("DOMContentLoaded", function () {
     let savedLinks = Store.getLinks();
     savedLinks.forEach((link) => buildLink(link.title, link.url, link.description, link.id));
     hideGhost();
+    clearAllInputs();
 });
 linkSaveBtn.addEventListener("click", function (e) {
     e.preventDefault();
@@ -108,10 +110,10 @@ function toggleInputError(element, state = false) {
 }
 // show/hide the message of empty links
 function hideGhost() {
-    if (document.querySelector(".bookmark-item")) {
-        noLinkMessage.style.display = "none";
-    } else {
+    if (!document.querySelector(".bookmark-item") || [...document.querySelectorAll(".bookmark-item")].every((element) => element.style.display == "none")) {
         noLinkMessage.style.display = "block";
+    } else {
+        noLinkMessage.style.display = "none";
     }
 }
 // reset all input values
@@ -172,3 +174,17 @@ const currentMode = localStorage.getItem("theme") ? localStorage.getItem("theme"
 if (currentMode) {
     document.body.setAttribute("data-theme", currentMode);
 }
+
+searchInput.addEventListener("keyup", function () {
+    let value = this.value.toLowerCase();
+    let links = document.querySelectorAll(".bk-name");
+
+    links.forEach((link) => {
+        if (link.textContent.toLowerCase().indexOf(value) > -1) {
+            link.parentElement.parentElement.style.display = "";
+        } else {
+            link.parentElement.parentElement.style.display = "none";
+        }
+    });
+    hideGhost();
+});
