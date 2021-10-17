@@ -98,7 +98,7 @@ function buildLink(title, url, description, id) {
 }
 // go to the url after clicking on the link
 function goTo(url) {
-    window.location.host = url;
+    window.open(url, "_blank");
 }
 // show/remove the alert over inputs based on the state value
 function toggleInputError(element, state = false) {
