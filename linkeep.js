@@ -8,7 +8,7 @@ const noLinkMessage = document.querySelector(".nolink");
 const modeToggle = document.querySelector(".toggle-mode");
 const [nameAlert, urlAlert] = document.querySelectorAll(".warn");
 const searchInput = document.querySelector(".search-input");
-
+let ids = 0;
 // ======= when we refresh the page or open the browser we build links from localStorage date =====
 window.addEventListener("DOMContentLoaded", function () {
     let savedLinks = Store.getLinks();
@@ -34,7 +34,7 @@ function saveLink() {
     // if there's no  value in the description input description will be nothing
     let description = linkDescriptionInput.value ? `<p class="bk-description">${linkDescriptionInput.value}</p>` : "";
     // generate id based on stored links length
-    let id = Store.getLinks().length;
+    let id = ids++;
     // check if the dete is vaalid
     if (checkData(title, url)) {
         // build a link container based on the info above
@@ -146,10 +146,9 @@ class Store {
         links.forEach((link, index) => {
             if (element.id == link.id) {
                 links.splice(index, 1);
+                localStorage.setItem("links", JSON.stringify(links));
             }
         });
-
-        localStorage.setItem("links", JSON.stringify(links));
     }
 }
 
